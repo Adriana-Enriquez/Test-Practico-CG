@@ -1,0 +1,22 @@
+<div class="budget-wrapper">
+  <h2>Crear Presupuesto</h2>
+
+  <label>Comentario:</label>
+  <textarea [(ngModel)]="comment" rows="3"></textarea>
+
+  <button (click)="toggleModal()">Agregar producto</button>
+
+  <h3>Productos seleccionados</h3>
+<h3>Productos seleccionados</h3>
+<app-product-list [products]="selectedProducts"></app-product-list>
+  <ng-template #empty>
+    <p>No se han agregado productos.</p>
+  </ng-template>
+
+  <p class="total"><strong>Total: ${{ total }}</strong></p>
+
+  <button (click)="save()">Guardar presupuesto</button>
+
+  <app-product-table-model *ngIf="showModal" (close)="toggleModal()"></app-product-table-model>
+
+</div>
