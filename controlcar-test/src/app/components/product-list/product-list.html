@@ -1,0 +1,9 @@
+<ul *ngIf="products.length > 0; else emptyList">
+  <li *ngFor="let product of products">
+    {{ product.name }} - ${{ product.price }}
+  </li>
+</ul>
+
+<ng-template #emptyList>
+  <p>No se han agregado productos.</p>
+</ng-template>
