@@ -1,9 +1,10 @@
 .summary-box {
   margin-top: 1rem;
   padding: 1rem;
-  border: 1px solid #555;
+  background: var(--surface-light);
+  border-left: 4px solid var(--action-green);
   border-radius: var(--border-radius);
-  background-color: var(--color-surface-light);
   font-size: 1.1rem;
-  color: var(--color-text);
+  font-family: var(--font-main);
+  color: var(--text-main);
 }
