@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ProductList } from '../../components/product-list/product-list';
-import { Product } from '../../services/product';
+import { CommonModule } from '@angular/common';
+
+import { ProductService, Product } from '../../services/product';
 import { ProductTableModel } from '../../components/product-table-model/product-table-model';
-import { NgIf, NgFor, NgTemplateOutlet } from '@angular/common';
+import { ProductList} from '../../components/product-list/product-list';
+import { Summary } from '../../components/summary/summary';
 
 @Component({
   selector: 'app-budget-creator',
@@ -12,16 +13,14 @@ import { NgIf, NgFor, NgTemplateOutlet } from '@angular/common';
   imports: [
     CommonModule,
     FormsModule,
-    NgIf,
-    NgFor,
-    NgTemplateOutlet,
     ProductTableModel,
-    ProductList
+    ProductList,
+    Summary
   ],
   templateUrl: './budget-creator.html',
   styleUrl: './budget-creator.scss'
 })
-export class BudgetCreatorComponent {
+export class BudgetCreator {
   showModal = false;
   comment = '';
   selectedProducts: Product[] = [];
@@ -32,18 +31,18 @@ export class BudgetCreatorComponent {
     });
   }
 
-  toggleModal() {
+  toggleModal(): void {
     this.showModal = !this.showModal;
   }
 
   get total(): number {
-    return this.selectedProducts.reduce((acc, product) => acc + product.price, 0);
+    return this.selectedProducts.reduce((sum, product) => sum + product.price, 0);
   }
 
-  save() {
+  save(): void {
     console.log('Presupuesto guardado:', {
-      comment: this.comment,
-      products: this.selectedProducts,
+      comentario: this.comment,
+      productos: this.selectedProducts,
       total: this.total
     });
     alert('Presupuesto guardado en consola 💾');

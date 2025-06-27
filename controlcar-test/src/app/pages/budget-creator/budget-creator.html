@@ -13,7 +13,7 @@
     <p>No se han agregado productos.</p>
   </ng-template>
 
-  <p class="total"><strong>Total: ${{ total }}</strong></p>
+  <app-summary [total]="total"></app-summary>
 
   <button (click)="save()">Guardar presupuesto</button>
 

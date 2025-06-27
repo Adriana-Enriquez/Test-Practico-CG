@@ -13,12 +13,12 @@ export class ProductTableModel {
   @Output() close = new EventEmitter<void>();
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {
-    this.products = this.productService.getProducts();
+  constructor(private ProductService: ProductService) {
+    this.products = this.ProductService.getProducts();
   }
 
   add(product: Product) {
-    this.productService.addProduct(product);
+    this.ProductService.addProduct(product);
     this.close.emit();
   }
 }
